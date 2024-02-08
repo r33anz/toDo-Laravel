@@ -35,6 +35,8 @@
                                     <td>{{$prd -> descripcion}}</td>
                                     <td>{{$prd -> precio}}</td>
                                     <td> 
+                                        
+                                        <a href="{{route('productos.editar',$prd -> id)}}" class="btn btn-warning btn-sm">Editar</a>
                                         <a href="javascript: document.getElementById('delete-{{$prd ->id}}').submit()" class="btn btn-danger btn-sm">Eliminar</a>
                                         <form id="delete-{{$prd->id}}" action="{{route('productos.eliminar',$prd->id)}}" method="POST">
                                             @method('delete')
@@ -43,8 +45,7 @@
                                     </td>
                                 </tr>
                                 @endforeach   
-                                 
-
+                                
                             </tbody>
                         </table>
                     </div>

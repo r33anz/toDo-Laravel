@@ -38,3 +38,17 @@ Route::delete('productos/{id}',function($id){
     $p ->delete();
     return redirect() -> route('productos.index');
 }) ->name('productos.eliminar');
+
+
+Route::get('productos/{id}/editar', function($id){
+    $p = Product2::findOrfail($id);
+    return view('productos.editar',compact('p'));
+}) -> name('productos.editar');
+
+Route::put('productos/{id}', function(Request $request, $id){
+    $p = Product2::findOrfail($id);
+    $p -> descripcion = $request -> input('descripcion');
+    $p -> precio = $request -> input('precio');
+    $p -> save();
+    return redirect() -> route('productos.index');
+}) ->name('productos.actualizar');
