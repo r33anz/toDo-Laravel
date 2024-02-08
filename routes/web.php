@@ -32,3 +32,9 @@ Route::post('productos',function(Request $request){
     $newP -> save();
     return redirect() -> route('productos.index') -> with('info','Producto creado exitosamente');
 }) -> name('productos.guardar');
+
+Route::delete('productos/{id}',function($id){
+    $p = Product2 ::findOrfail($id);
+    $p ->delete();
+    return redirect() -> route('productos.index');
+}) ->name('productos.eliminar');
